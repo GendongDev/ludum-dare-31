@@ -5,6 +5,7 @@ public class HeroController : MonoBehaviour
 {
     public Transform MovementRelative;
     public float Speed;
+    public float RunSpeed;
     public AudioClip ItemPickupClip;
 
     CharacterController controller;
@@ -46,7 +47,9 @@ public class HeroController : MonoBehaviour
 
             transform.localRotation = Quaternion.LookRotation(heading);
 
-            controller.Move(transform.forward * Speed * Time.deltaTime);
+            float s = (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift)) ? RunSpeed : Speed;
+
+            controller.Move(transform.forward * s * Time.deltaTime);
         }
 
         if (follow != null)
