@@ -161,6 +161,9 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(HideLevelSelectWidgets());
         yield return new WaitForSeconds(0.25f);
 
+        Level1Button.gameObject.SetActive(false);
+        Level2Button.gameObject.SetActive(false);
+        Level3Button.gameObject.SetActive(false);
         InstructionsPanel.gameObject.SetActive(false);
 
         ContentPanel.SetBool("isHidden", true);
@@ -180,6 +183,9 @@ public class GameManager : MonoBehaviour
         Destroy(currentLevel.gameObject);
         currentLevel = null;
 
+        Level1Button.gameObject.SetActive(true);
+        Level2Button.gameObject.SetActive(true);
+        Level3Button.gameObject.SetActive(true);
         InstructionsPanel.gameObject.SetActive(true);
 
         yield return StartCoroutine(UnhideLevelSelectWidgets());
